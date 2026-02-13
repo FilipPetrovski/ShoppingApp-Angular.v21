@@ -1,7 +1,7 @@
 import { Component, input, output, signal } from '@angular/core';
-import { Product } from '../models/product.class';
 import { CommonModule } from '@angular/common';
-import { ImageCarouselComponent } from '../../../shared/components/image-carousel/image-carousel/image-carousel.component';
+import { ImageCarouselComponent } from '../../../../shared/components/image-carousel/image-carousel/image-carousel.component';
+import { Product } from '../../models/product.class';
 
 @Component({
     selector: 'pg-product',
