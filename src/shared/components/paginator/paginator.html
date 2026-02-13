@@ -1,0 +1,46 @@
+<div class="mt-12 flex flex-col items-center gap-4 pb-12">
+  <div class="flex items-center gap-2">
+    <button
+      (click)="paginator.prevPage()"
+      [disabled]="paginator.currentPage() === 1"
+      class="p-2 rounded-lg border border-gray-300 bg-white text-gray-600 transition-all hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
+    >
+      <svg
+        xmlns="http://www.w3.org"
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <div class="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm">
+      <span class="text-sm font-medium text-gray-700">
+        Page <span class="text-blue-600">{{ paginator.currentPage() }}</span> of
+        <span class="text-gray-900">{{ paginator.totalPages() }}</span>
+      </span>
+    </div>
+
+    <button
+      (click)="paginator.nextPage()"
+      [disabled]="paginator.currentPage() >= paginator.totalPages()"
+      class="p-2 rounded-lg border border-gray-300 bg-white text-gray-600 transition-all hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
+    >
+      <svg
+        xmlns="http://www.w3.org"
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold">
+    Total Items: {{ paginator.totalItems() }}
+  </p>
+</div>
