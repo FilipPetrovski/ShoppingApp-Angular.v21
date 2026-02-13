@@ -1,0 +1,159 @@
+<div class="h-full bg-gray-50 p-6 lg:p-12 overflow-y-auto">
+    <div class="max-w-3xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h1 class="text-3xl font-black text-gray-900 tracking-tight text-indigo-600">
+                    Add Product
+                </h1>
+                <p class="text-gray-500 text-sm mt-1 uppercase font-bold tracking-tighter">
+                    Filip Petrovski Warehouse
+                </p>
+            </div>
+            <button
+                routerLink="../"
+                class="text-gray-400 hover:text-red-500 font-black text-xs uppercase tracking-widest cursor-pointer transition-colors"
+            >
+                Cancel
+            </button>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100 p-8">
+            <form (submit)="$event.preventDefault(); saveProduct()" class="space-y-6">
+                <div>
+                    <label
+                        class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2"
+                        >Product Title</label
+                    >
+                    <input
+                        type="text"
+                        [formField]="productForm.title"
+                        class="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-indigo-600 font-bold text-gray-900"
+                    />
+                    @if (productForm.title().touched() && productForm.title().errors().length > 0) {
+                        <p
+                            class="text-red-500 text-[10px] mt-2 font-black uppercase tracking-widest"
+                        >
+                            Title is required
+                        </p>
+                    }
+                </div>
+                <div>
+                    <label
+                        class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2"
+                        >Description</label
+                    >
+                    <textarea
+                        [formField]="productForm.description"
+                        rows="3"
+                        class="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-indigo-600 font-bold text-gray-900"
+                    ></textarea>
+                    @if (
+                        productForm.description().touched() &&
+                        productForm.description().errors().length > 0
+                    ) {
+                        <p
+                            class="text-red-500 text-[10px] mt-2 font-black uppercase tracking-widest"
+                        >
+                            Description is required
+                        </p>
+                    }
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label
+                            class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2"
+                            >Price ($)</label
+                        >
+                        <input
+                            type="number"
+                            [formField]="productForm.price"
+                            class="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-indigo-600 font-bold"
+                        />
+                        @if (
+                            productForm.price().touched() && productForm.price().errors().length > 0
+                        ) {
+                            <p
+                                class="text-red-500 text-[10px] mt-2 font-black uppercase tracking-widest"
+                            >
+                                {{ productForm.price().errors()[0].message }}
+                            </p>
+                        }
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2"
+                            >Discount (%)</label
+                        >
+                        <input
+                            type="number"
+                            [formField]="productForm.discountPercentage"
+                            class="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-indigo-600 font-bold"
+                        />
+                        @if (
+                            productForm.discountPercentage().touched() &&
+                            productForm.discountPercentage().errors().length > 0
+                        ) {
+                            <p
+                                class="text-red-500 text-[10px] mt-2 font-black uppercase tracking-widest"
+                            >
+                                {{ productForm.discountPercentage().errors()[0].message }}
+                            </p>
+                        }
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2"
+                            >Stock Amount</label
+                        >
+                        <input
+                            type="number"
+                            [formField]="productForm.stock"
+                            class="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-indigo-600 font-bold"
+                        />
+                        @if (
+                            productForm.stock().touched() && productForm.stock().errors().length > 0
+                        ) {
+                            <p
+                                class="text-red-500 text-[10px] mt-2 font-black uppercase tracking-widest"
+                            >
+                                {{ productForm.stock().errors()[0].message }}
+                            </p>
+                        }
+                    </div>
+                </div>
+                <div>
+                    <label
+                        class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2"
+                        >Thumbnail URL</label
+                    >
+                    <input
+                        type="text"
+                        [formField]="productForm.thumbnail"
+                        class="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-indigo-600 font-mono text-sm"
+                    />
+                    @if (
+                        productForm.thumbnail().touched() &&
+                        productForm.thumbnail().errors().length > 0
+                    ) {
+                        <p
+                            class="text-red-500 text-[10px] mt-2 font-black uppercase tracking-widest"
+                        >
+                            Image URL is required
+                        </p>
+                    }
+                </div>
+
+                <div class="pt-6">
+                    <button
+                        type="submit"
+                        [disabled]="productForm().invalid()"
+                        class="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-indigo-100 transition-all active:scale-95 cursor-pointer uppercase tracking-widest"
+                    >
+                        Save Product ➔
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
