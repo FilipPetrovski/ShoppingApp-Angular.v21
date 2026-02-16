@@ -1,9 +1,9 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Product } from '../../products/models/product.class';
 import { CartItem } from '../models/cart-item.interface';
 
 @Injectable({ providedIn: 'root' })
-export class CartService {
+export class ShoppingCartService {
   private cartItems = signal<CartItem[]>([]);
   isCartOpen = signal(false);
 
