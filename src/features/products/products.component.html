@@ -38,26 +38,27 @@
       </div>
       <input
         type="text"
-        [ngModel]="productService.searchTerm()"
-        (ngModelChange)="productService.searchTerm.set($event)"
+        [ngModel]="searchTerm()"
+        (ngModelChange)="updateSearch($event)"
         placeholder="Search products (e.g. 'iPhone', 'Laptop')..."
         class="block w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-[1.5rem] leading-5 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm transition-all text-lg"
       />
     </div>
   </div>
-  @if (productService.productsResource.isLoading()) {
+
+  @if (productsResource.isLoading()) {
     <div class="flex flex-col items-center justify-center h-64 space-y-4">
       <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
       <p class="text-gray-500 font-medium">Fetching the latest deals...</p>
     </div>
-  } @else if (productService.productsResource.error()) {
+  } @else if (productsResource.error()) {
     <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded shadow-sm">
       <p class="text-red-700">Error: Unable to load products at this time.</p>
     </div>
   } @else {
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      @for (item of productService.productsResource.value(); track item.id) {
-        <pg-product [product]="item" (addToCart)="cartService.addToCart($event)" />
+      @for (item of productsResource.value(); track item.id) {
+        <pg-product [product]="item" (addToCart)="onAddToCart($event)" />
       }
     </div>
   }

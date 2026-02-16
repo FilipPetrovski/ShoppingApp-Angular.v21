@@ -14,8 +14,23 @@ import { ProductService } from './services/product.service';
   providers: [ProductService],
 })
 export class ProductsComponent {
-  public productService = inject(ProductService);
-  public cartService = inject(ShoppingCartService);
+  private productService = inject(ProductService);
+  private cartService = inject(ShoppingCartService);
+
+  get searchTerm() {
+    return this.productService.searchTerm;
+  }
+  get productsResource() {
+    return this.productService.productsResource;
+  }
+
+  updateSearch(value: string): void {
+    this.productService.searchTerm.set(value);
+  }
+
+  onAddToCart(product: any): void {
+    this.cartService.addToCart(product);
+  }
 
   // Old implementation using RXJS
   // private searchSubject = new Subject<string>();
