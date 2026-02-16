@@ -1,8 +1,8 @@
 <div class="mt-12 flex flex-col items-center gap-4 pb-12">
   <div class="flex items-center gap-2">
     <button
-      (click)="paginator.prevPage()"
-      [disabled]="paginator.currentPage() === 1"
+      (click)="onPrevPage()"
+      [disabled]="currentPage() === 1"
       class="p-2 rounded-lg border border-gray-300 bg-white text-gray-600 transition-all hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
     >
       <svg
@@ -18,14 +18,14 @@
 
     <div class="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm">
       <span class="text-sm font-medium text-gray-700">
-        Page <span class="text-blue-600">{{ paginator.currentPage() }}</span> of
-        <span class="text-gray-900">{{ paginator.totalPages() }}</span>
+        Page <span class="text-blue-600">{{ currentPage() }}</span> of
+        <span class="text-gray-900">{{ totalPages() }}</span>
       </span>
     </div>
 
     <button
-      (click)="paginator.nextPage()"
-      [disabled]="paginator.currentPage() >= paginator.totalPages()"
+      (click)="onNextPage()"
+      [disabled]="currentPage() >= totalPages()"
       class="p-2 rounded-lg border border-gray-300 bg-white text-gray-600 transition-all hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
     >
       <svg
@@ -41,6 +41,6 @@
   </div>
 
   <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold">
-    Total Items: {{ paginator.totalItems() }}
+    Total Items: {{ totalItems() }}
   </p>
 </div>

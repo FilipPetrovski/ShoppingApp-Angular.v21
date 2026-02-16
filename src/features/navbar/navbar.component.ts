@@ -4,15 +4,25 @@ import { ShoppingCartService } from '../shopping-cart/services/shopping-cart.ser
 
 @Component({
   selector: 'pg-navbar',
+  standalone: true,
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  public cartService = inject(ShoppingCartService);
+  private cartService = inject(ShoppingCartService);
 
   isMenuOpen = signal(false);
+  cartCount = this.cartService.count;
 
-  toggleMenu() {
+  toggleMenu(): void {
     this.isMenuOpen.update((open) => !open);
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen.set(false);
+  }
+
+  openCart(): void {
+    this.cartService.isCartOpen.set(true);
   }
 }
