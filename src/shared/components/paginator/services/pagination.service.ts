@@ -1,4 +1,4 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class PaginationService {
@@ -12,7 +12,7 @@ export class PaginationService {
   nextPage() {
     if (this.currentPage() < this.totalPages()) this.currentPage.update((n) => n + 1);
   }
-  
+
   prevPage() {
     if (this.currentPage() > 1) this.currentPage.update((n) => n - 1);
   }

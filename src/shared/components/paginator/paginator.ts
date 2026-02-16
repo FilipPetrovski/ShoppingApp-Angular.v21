@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { PaginationService } from '../../paginated-response/services/paginated-response.service';
+import { PaginationService } from './services/pagination.service';
 
 @Component({
-  selector: 'app-paginator',
+  selector: 'pg-paginator',
   imports: [],
   templateUrl: './paginator.html',
-  styleUrl: './paginator.css',
 })
 export class Paginator {
   public paginator = inject(PaginationService);
