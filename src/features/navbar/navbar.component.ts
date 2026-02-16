@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { CartService } from '../shopping-cart/services/shopping-cart.service';
+import { ShoppingCartService } from '../shopping-cart/services/shopping-cart.service';
 
 @Component({
   selector: 'pg-navbar',
@@ -8,7 +8,7 @@ import { CartService } from '../shopping-cart/services/shopping-cart.service';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  public cartService = inject(CartService);
+  public cartService = inject(ShoppingCartService);
 
   isMenuOpen = signal(false);
 

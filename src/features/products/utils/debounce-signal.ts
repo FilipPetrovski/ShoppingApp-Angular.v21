@@ -1,4 +1,4 @@
-import { Signal, signal, effect } from '@angular/core';
+import { effect, Signal, signal } from '@angular/core';
 
 export function debouncedSignal<T>(source: Signal<T>, delay = 300): Signal<T> {
   const debounced = signal(source());

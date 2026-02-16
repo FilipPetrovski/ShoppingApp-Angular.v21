@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CartService } from '../services/shopping-cart.service';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 @Component({
   selector: 'pg-shopping-cart',
@@ -7,5 +7,5 @@ import { CartService } from '../services/shopping-cart.service';
   templateUrl: './shopping-cart.component.html',
 })
 export class ShoppingCartComponent {
-  public cartService = inject(CartService);
+  public cartService = inject(ShoppingCartService);
 }
