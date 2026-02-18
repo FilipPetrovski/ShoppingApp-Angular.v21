@@ -1,21 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { ContactMeComponent } from './contact-me.component';
 
-describe('ContactUsComponent', () => {
+describe('ContactMeComponent', () => {
   let component: ContactMeComponent;
-  let fixture: ComponentFixture<ContactMeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ContactMeComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ContactMeComponent);
+    const fixture = TestBed.createComponent(ContactMeComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it('should create the component instance successfully', () => {
     expect(component).toBeTruthy();
   });
 });
